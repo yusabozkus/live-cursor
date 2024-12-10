@@ -13,7 +13,6 @@ This project is a real-time application where users can connect, see each other'
 
 ## Folder Structure
 
-.
 ├── client/                   # Frontend React Application
 │   ├── src/
 │   │   ├── components/       # Shared components (e.g., Cursor)
