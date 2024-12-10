@@ -13,7 +13,6 @@ This project is a real-time application where users can connect, see each other'
 
 ## Folder Structure
 
-\`\`\`
 .
 ├── client/                   # Frontend React Application
 │   ├── src/
@@ -33,7 +32,6 @@ This project is a real-time application where users can connect, see each other'
 │   ├── package.json          # Node.js dependencies
 │   └── package-lock.json     # Node.js package lock file
 └── README.md                 # Project documentation
-\`\`\`
 
 ## Detailed Description:
 
