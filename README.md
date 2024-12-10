@@ -11,27 +11,6 @@ This project is a real-time application where users can connect, see each other'
 4. **Frontend**: Built with **React** and **Vite** for fast development and hot module replacement.
 5. **Backend**: **Node.js** and **WebSocket** handle multiple connections and broadcast user states.
 
-## Folder Structure
-
-├── client/                   # Frontend React Application
-│   ├── src/
-│   │   ├── components/       # Shared components (e.g., Cursor)
-│   │   │   └── Cursor.jsx    # Component to display user cursors
-│   │   ├── hooks/            # Custom hooks (e.g., useCursor)
-│   │   │   └── useCursor.jsx # Hook for cursor tracking
-│   │   ├── pages/            # React Pages (Login, Home)
-│   │   │   ├── Login.tsx     # Login page for user authentication
-│   │   │   └── Home.tsx      # Home page displaying user cursors
-│   │   ├── App.tsx           # Main app component
-│   │   └── index.tsx         # Entry point
-│   ├── package.json          # Vite + React dependencies
-│   └── vite.config.js        # Vite configuration
-├── server/                   # Backend WebSocket server
-│   ├── index.js              # WebSocket server implementation
-│   ├── package.json          # Node.js dependencies
-│   └── package-lock.json     # Node.js package lock file
-└── README.md                 # Project documentation
-
 ## Detailed Description:
 
 - **Frontend (Client)**: 
