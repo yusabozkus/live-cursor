@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import useWebSocket from "react-use-websocket";
 import throttle from "lodash.throttle";
+import { Audio, InfinitySpin, Radio } from 'react-loader-spinner'
 
 import { Cursor } from "../components/Cursor";
 
@@ -21,7 +22,7 @@ const renderCursorts = (users, id) => {
 const renderUsersList = (users) => {
   return (
     <div className="p-4">
-      <ul className="list-none text-white p-5 w-max bg-card rounded-lg border border-[#383838]">
+      <ul className="list-none text-white p-5 w-max bg-card rounded-lg border border-[#dadada]">
         {Object.keys(users).map((uuid) => {
           return (
             <li key={uuid}>
@@ -43,10 +44,17 @@ const renderUsersList = (users) => {
 };
 
 const Home = ({ username, id }) => {
-  const WS_URL = "wss://live-cursor-server-production.up.railway.app";
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  // const WS_URL = "wss://live-cursor-server-production.up.railway.app";
+  const WS_URL = "ws://localhost:8000";
 
   const { sendJsonMessage, lastJsonMessage } = useWebSocket(WS_URL, {
     queryParams: { username, id },
+    onOpen: () => {
+      setIsLoading(false)
+    }
   });
 
   const THROTTLE = 50;
@@ -70,8 +78,24 @@ const Home = ({ username, id }) => {
   if (lastJsonMessage) {
     return (
       <>
-        {renderCursorts(lastJsonMessage, id)}
-        {renderUsersList(lastJsonMessage)}
+        {isLoading ?
+          <div className="w-full h-full flex flex-col items-center justify-center">
+            <InfinitySpin
+              height="250"
+              radius="0"
+              color="#b65123"
+              ariaLabel="three-dots-loading"
+              wrapperStyle
+              wrapperClass
+            />
+            <p className="text-white font-bold mt-4">Connecting to server...</p>
+          </div>
+          :
+          <>
+            {renderCursorts(lastJsonMessage, id)}
+            {renderUsersList(lastJsonMessage)}
+          </>
+        }
       </>
     );
   }

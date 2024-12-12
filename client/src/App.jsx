@@ -1,6 +1,7 @@
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import { useState } from "react";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -8,6 +9,18 @@ function App() {
 
   return (
     <main className="w-full h-[100vh] bg-body">
+      <Toaster
+        toastOptions={{
+          className: '',
+          style: {
+            backgroundColor: "#242424",
+            border: '1px solid #fafafa',
+            padding: '16px',
+            color: '#fff',
+          },
+        }}
+        position="top-center"
+      />
       {username && uuid ? (
         <Home username={username} id={uuid} />
       ) : (
